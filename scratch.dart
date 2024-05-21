@@ -1,6 +1,7 @@
 List<int> winningNumbers = [
   12,
   6,
+  9,
   34,
   22,
   41,
@@ -12,10 +13,13 @@ void main() {
 }
 
 void checkNumbers(List<int> myNumbers) {
+  int matches = 0;
   for (int myNum in myNumbers) {
     for (int winNum in winningNumbers) {
-      print('mynum = ${myNum.}');
-      print('winNum=$winNum');
+      if (winNum == myNum) {
+        matches++;
+      }
     }
   }
+  print('u got $matches matches');
 }
