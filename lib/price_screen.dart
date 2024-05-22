@@ -1,13 +1,16 @@
 import 'package:bitcoin_tracker/coin_data.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'dart:io' show Platform;
 
 class PriceScreen extends StatefulWidget {
+  const PriceScreen({super.key});
+
   @override
-  _PriceScreenState createState() => _PriceScreenState();
+  PriceScreenState createState() => PriceScreenState();
 }
 
-class _PriceScreenState extends State<PriceScreen> {
+class PriceScreenState extends State<PriceScreen> {
   String? selectedCurrency = 'USD';
 
   DropdownButton<String> androidDropdown() {
@@ -25,7 +28,6 @@ class _PriceScreenState extends State<PriceScreen> {
         onChanged: (value) {
           setState(() {
             selectedCurrency = value;
-            print(selectedCurrency);
           });
         });
   }
@@ -39,7 +41,7 @@ class _PriceScreenState extends State<PriceScreen> {
         itemExtent: 36.0,
         onSelectedItemChanged: (selectedCurrency) {
           setState(() {
-            print(selectedCurrency);
+            selectedCurrency;
           });
         },
         children: pickerItem);
@@ -81,7 +83,7 @@ class _PriceScreenState extends State<PriceScreen> {
             alignment: Alignment.center,
             padding: const EdgeInsets.only(bottom: 30.0),
             color: Colors.lightBlue,
-            child: androidDropdown(),
+            child: Platform.isIOS ? iosPicker() : androidDropdown(),
           ),
         ],
       ),
