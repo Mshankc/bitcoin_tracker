@@ -27,3 +27,4 @@ const List<String> currenciesList = [
   'USD',
   'ZAR'
 ];
+coinData() {}
